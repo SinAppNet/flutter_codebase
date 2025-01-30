@@ -120,3 +120,39 @@ Future appTracking(
     );
   }
 }
+
+Future updateNotifies(
+  BuildContext context, {
+  int? user,
+  String? notifie,
+}) async {
+  List<NotificationsRow>? notifie;
+
+  notifie = await NotificationsTable().queryRows(
+    queryFn: (q) => q.eqOrNull(
+      'user',
+      user,
+    ),
+  );
+  if (notifie == 'message') {
+    await NotificationsTable().update(
+      data: {
+        'message': true,
+      },
+      matchingRows: (rows) => rows.eqOrNull(
+        'id',
+        notifie?.firstOrNull?.id,
+      ),
+    );
+  } else if (notifie == 'connection') {
+    await NotificationsTable().update(
+      data: {
+        'connection': true,
+      },
+      matchingRows: (rows) => rows.eqOrNull(
+        'id',
+        notifie?.firstOrNull?.id,
+      ),
+    );
+  }
+}

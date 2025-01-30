@@ -15,6 +15,8 @@ class NewHomeModel extends FlutterFlowModel<NewHomeWidget> {
   UsersRow? user;
   // Stores action output result for [Backend Call - Query Rows] action in newHome widget.
   List<RegistroDiarioRow>? diario;
+  // Stores action output result for [Backend Call - Query Rows] action in newHome widget.
+  List<NotificationsRow>? notifies;
   Stream<List<UsersRow>>? containerSupabaseStream1;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;

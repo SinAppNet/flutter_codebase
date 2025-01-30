@@ -27,4 +27,5 @@ export 'tables/match_tracking.dart';
 export 'tables/users.dart';
 export 'tables/likes.dart';
 export 'tables/user_info_view.dart';
+export 'tables/notifications.dart';
 export 'tables/conteudos.dart';

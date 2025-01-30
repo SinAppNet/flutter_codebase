@@ -264,36 +264,7 @@ class _NewConnectionsWidgetState extends State<NewConnectionsWidget> {
                                   return;
                                 }
                               } else {
-                                await showDialog(
-                                  barrierDismissible: false,
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      elevation: 0,
-                                      insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Colors.transparent,
-                                      alignment: const AlignmentDirectional(0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      child: WebViewAware(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            FocusScope.of(dialogContext)
-                                                .unfocus();
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
-                                          },
-                                          child: const SizedBox(
-                                            height: double.infinity,
-                                            width: double.infinity,
-                                            child: LimitViewsWidget(
-                                              type: 'completarPerfil',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
+                                context.pushNamed('matchPage');
 
                                 if (shouldSetState) safeSetState(() {});
                                 return;

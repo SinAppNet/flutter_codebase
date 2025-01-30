@@ -264,6 +264,8 @@ dynamic deserializeParam<T>(
             return LikesRow(data);
           case UserInfoViewRow:
             return UserInfoViewRow(data);
+          case NotificationsRow:
+            return NotificationsRow(data);
           case ConteudosRow:
             return ConteudosRow(data);
           default:

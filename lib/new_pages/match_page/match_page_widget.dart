@@ -313,6 +313,12 @@ class _MatchPageWidgetState extends State<MatchPageWidget>
                             _model.matchgh?.firstOrNull?.id,
                           ),
                         );
+                        await action_blocks.updateNotifies(
+                          context,
+                          user: swipeableStackUsuariosSemConexoesRowList[index]
+                              .id,
+                          notifie: 'connection',
+                        );
                         safeSetState(() => _model.requestCompleter = null);
                         await _model.waitForRequestCompleted();
                         if (_model.matchgh!.firstOrNull!.qntdDisponivel! < 2) {

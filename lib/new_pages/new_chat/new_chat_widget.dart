@@ -1036,6 +1036,18 @@ class _NewChatWidgetState extends State<NewChatWidget> {
                                                 );
                                               }(),
                                             );
+                                            await action_blocks.updateNotifies(
+                                              context,
+                                              user: widget.chat?.users
+                                                  .where((e) =>
+                                                      e !=
+                                                      FFAppState()
+                                                          .currentUser
+                                                          .id)
+                                                  .toList()
+                                                  .firstOrNull,
+                                              notifie: 'message',
+                                            );
                                           } else {
                                             await MensagensTable().insert({
                                               'chat': widget.chat?.id,
@@ -1104,6 +1116,18 @@ class _NewChatWidgetState extends State<NewChatWidget> {
                                                   },
                                                 );
                                               }(),
+                                            );
+                                            await action_blocks.updateNotifies(
+                                              context,
+                                              user: widget.chat?.users
+                                                  .where((e) =>
+                                                      e !=
+                                                      FFAppState()
+                                                          .currentUser
+                                                          .id)
+                                                  .toList()
+                                                  .firstOrNull,
+                                              notifie: 'message',
                                             );
                                           }
 

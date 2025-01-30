@@ -138,6 +138,25 @@ class _NewHomeWidgetState extends State<NewHomeWidget> {
             );
             return;
           }),
+          Future(() async {
+            _model.notifies = await NotificationsTable().queryRows(
+              queryFn: (q) => q.eqOrNull(
+                'user',
+                FFAppState().currentUser.id,
+              ),
+            );
+            if ((_model.notifies != null && (_model.notifies)!.isNotEmpty) ==
+                true) {
+              return;
+            }
+
+            await NotificationsTable().insert({
+              'user': FFAppState().currentUser.id,
+              'message': false,
+              'connection': false,
+            });
+            return;
+          }),
         ]);
       } else {
         GoRouter.of(context).prepareAuthEvent();

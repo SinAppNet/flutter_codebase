@@ -141,6 +141,21 @@ class FFAppState extends ChangeNotifier {
   void clearCardCache() => _cardManager.clear();
   void clearCardCacheKey(String? uniqueKey) =>
       _cardManager.clearRequest(uniqueKey);
+
+  final _notifiesManager = FutureRequestManager<List<NotificationsRow>>();
+  Future<List<NotificationsRow>> notifies({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<List<NotificationsRow>> Function() requestFn,
+  }) =>
+      _notifiesManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearNotifiesCache() => _notifiesManager.clear();
+  void clearNotifiesCacheKey(String? uniqueKey) =>
+      _notifiesManager.clearRequest(uniqueKey);
 }
 
 void _safeInit(Function() initializeField) {
